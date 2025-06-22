@@ -3,25 +3,19 @@
 #include <algorithm>
 using namespace std;
 int majorityElement (vector <int> & nums) {
-    int i=1;
-    sort(nums.begin(),nums.end());
-    int freq=1,ans=nums[0];
-    while ( i< nums.size()){
-        if(nums[i]==nums[i-1]){
-            freq++;
-        }else {
-            freq =1;
-        ans = nums[i];
-        }
-        cout<<freq;
-        if(freq >nums.size()/2) return ans;
-      i++;
-    }
+
+   
+    int freq=0,ans ;
+   for(int num:nums){
+
+    if(freq==0) ans = num;
+    freq+=(ans == num)?1:-1;
+   }
     return ans;
     
 };
 int main(){
-    vector<int>input={6,5,5};
+    vector<int>input={3,2,3};
     int out=majorityElement(input);
     cout << out;
 
